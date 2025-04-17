@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class TaskManager {
+    private List<Task> taskList;
+
+    public TaskManager() {
+        this.taskList = new ArrayList<>();
+    }
+
+    // Add task
+    public void addTask(Task task) {
+        taskList.add(task);
+    }
+
+    // Remove task by ID
+    public void removeTask(int taskId) {
+        taskList.removeIf(task -> task.getTaskId() == taskId);
+    }
+
+    // Update task status
+    public void updateTaskStatus(int taskId, String status) {
+        for (Task task : taskList) {
+            if (task.getTaskId() == taskId) {
+                task.updateStatus(status);
+                break;
+            }
+        }
+    }
+
+    // Get list of tasks
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+}
